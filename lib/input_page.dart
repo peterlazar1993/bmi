@@ -14,6 +14,12 @@ class InputPage extends StatefulWidget {
 class _InputPageState extends State<InputPage> {
   Gender? selectedGender;
   int height = 180;
+  int weight = 60;
+  void changeWeight(int delta) {
+    setState(() {
+      weight += delta;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -86,17 +92,27 @@ class _InputPageState extends State<InputPage> {
                       )
                     ],
                   ),
-                  Slider(
-                      min: 120.0,
-                      max: 220.0,
-                      value: height.toDouble(),
-                      activeColor: Color(0xFFEB1555),
-                      inactiveColor: Color(0xFF8D8E98),
-                      onChanged: (double value) {
-                        setState(() {
-                          height = value.round();
-                        });
-                      })
+                  SliderTheme(
+                    data: SliderThemeData(
+                      thumbShape:
+                          RoundSliderThumbShape(enabledThumbRadius: 15.0),
+                      overlayShape:
+                          RoundSliderOverlayShape(overlayRadius: 30.0),
+                      thumbColor: kBottomContainerColor,
+                      activeTrackColor: Colors.white,
+                      inactiveTrackColor: Color(0xFF8D8E98),
+                      overlayColor: Color(0x29EB1555),
+                    ),
+                    child: Slider(
+                        min: 120.0,
+                        max: 220.0,
+                        value: height.toDouble(),
+                        onChanged: (double value) {
+                          setState(() {
+                            height = value.round();
+                          });
+                        }),
+                  )
                 ],
               ),
             ),
