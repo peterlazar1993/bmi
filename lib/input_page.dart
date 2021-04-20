@@ -1,11 +1,8 @@
+import 'package:bmi/constants.dart';
 import 'package:bmi/icon_content.dart';
 import 'package:bmi/reusable_card.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-
-const activeCardColor = Color(0xFF1D1E33);
-const inactiveCardColor = Color(0xFF111328);
-const bottomContainerHeight = 80.0;
 
 enum Gender { male, female }
 
@@ -40,8 +37,8 @@ class _InputPageState extends State<InputPage> {
                       label: 'MALE',
                     ),
                     color: selectedGender == Gender.male
-                        ? activeCardColor
-                        : inactiveCardColor,
+                        ? kActiveCardColor
+                        : kInactiveCardColor,
                   ),
                 ),
                 Expanded(
@@ -56,25 +53,34 @@ class _InputPageState extends State<InputPage> {
                       label: 'FEMALE',
                     ),
                     color: selectedGender == Gender.female
-                        ? activeCardColor
-                        : inactiveCardColor,
+                        ? kActiveCardColor
+                        : kInactiveCardColor,
                   ),
                 ),
               ],
             ),
           ),
           Expanded(
-            child: ReusableCard(color: activeCardColor),
+            child: ReusableCard(
+              color: kActiveCardColor,
+              child: Column(
+                children: [
+                  Text(
+                    'HEIGHT',
+                  )
+                ],
+              ),
+            ),
           ),
           Expanded(
             child: Row(
               children: [
                 Expanded(
-                  child: ReusableCard(color: activeCardColor),
+                  child: ReusableCard(color: kActiveCardColor),
                 ),
                 Expanded(
                   child: ReusableCard(
-                    color: activeCardColor,
+                    color: kActiveCardColor,
                   ),
                 ),
               ],
@@ -82,11 +88,11 @@ class _InputPageState extends State<InputPage> {
           ),
           Container(
             margin: EdgeInsets.only(top: 10),
-            height: bottomContainerHeight,
+            height: kBottomContainerHeight,
             width: double.infinity,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
-              color: Colors.red,
+              color: kBottomContainerColor,
             ),
           ),
         ],
