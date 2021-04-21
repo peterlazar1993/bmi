@@ -1,6 +1,8 @@
+import 'package:bmi/components/bottom_button.dart';
 import 'package:bmi/constants.dart';
-import 'package:bmi/icon_content.dart';
-import 'package:bmi/reusable_card.dart';
+import 'package:bmi/components/icon_content.dart';
+import 'package:bmi/components/reusable_card.dart';
+import 'package:bmi/components/round_icon_button.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -207,39 +209,14 @@ class _InputPageState extends State<InputPage> {
               ],
             ),
           ),
-          Container(
-            margin: EdgeInsets.only(top: 10),
-            height: kBottomContainerHeight,
-            width: double.infinity,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10),
-              color: kBottomContainerColor,
-            ),
+          BottomButton(
+            onTap: () {
+              Navigator.pushNamed(context, '/result');
+            },
+            buttonTitle: 'CALCULATE',
           ),
         ],
       ),
-    );
-  }
-}
-
-class RoundIconButton extends StatelessWidget {
-  RoundIconButton({required this.onPressed, required this.icon});
-
-  final void Function() onPressed;
-  final IconData icon;
-
-  @override
-  Widget build(BuildContext context) {
-    return RawMaterialButton(
-      child: Icon(icon),
-      elevation: 0,
-      constraints: BoxConstraints.tightFor(
-        width: 56.0,
-        height: 56.0,
-      ),
-      onPressed: onPressed,
-      shape: CircleBorder(),
-      fillColor: Color(0xFF4C4F5E),
     );
   }
 }
